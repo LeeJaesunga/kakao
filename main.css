@@ -175,6 +175,11 @@ header .item_menu.active {
     background-color: #d8d8d8;
 }
 
+#main .btn_download img {
+    width: 19px;
+    height: 17px;
+}
+
 #main .ico_download_circle {
     width: 16px;
     height: 16px;
