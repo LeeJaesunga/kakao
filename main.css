@@ -192,6 +192,8 @@ header .item_menu.active {
 
 #main .content_service {
     position: relative;
+    overflow-x: hidden;
+    padding-top: 72px;
 }
 
 #main .section_intro1 {
@@ -315,11 +317,300 @@ header .item_menu.active {
     top: 0;
 }
 
-#main
+#main .section_featrure {
+    position: relative;
+}
 
-#main
+#main .area_intro {
+    height: calc(100vh - 72px);
+    position: relative;
+    opacity: .2;
+}
 
-#main
+#main .inner_cont {
+    position: absolute;
+    top: 33%;
+    left: 24%;
+    width: 816px;
+    text-align: center;
+}
 
-#main
+#main .inner_cont img {
+    max-width: 100%;
+    max-height: 84px;
+    margin-bottom: 36px;
+}
+
+#main .inner_cont p {
+ overflow: hidden;
+ font-size: 32px;
+    font-weight: 700;
+    line-height: 1.38;
+    letter-spacing: -.8px;
+    color:#000
+}
+
+#main .area_feature {
+    padding-bottom: 50px;
+}
+
+#main .inner_featureopt4 {
+    max-width: 816px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#main .slick_slider {
+    position: relative;
+    display: block;
+}
+
+#main .slick_list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#main .slick_track {
+    width: 4896px;
+    opacity: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+#main .slick_current {
+    display: block;
+    outline: none;
+    width: 816px;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+#main .slick_slide {
+    display: block;
+    outline: none;
+    width: 816px;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+#main .item_feature {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    padding-bottom: 121px;
+}
+
+#main .group_desc {
+
+}
+
+#main .wrap_desc {
+    min-height: 148px;
+}
+
+#main .wrap_desc strong {
+    line-height: 1.1;
+    overflow: hidden;
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -.8px;
+    color:#000
+}
+
+#main .wrap_desc p {
+    margin: 24px auto 0;
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: -.5px;
+    color:#666
+}
+
+#main .group_thumb {
+    margin-top: 36px;
+}
+
+#main .item_thumb img {
+    width: 100%;
+    display: block;
+}
+
+#main .slick_arrow {
+    position: absolute;
+    left: -62px;
+    width: 42px;
+    height: 42px;
+    bottom: 332px;
+    cursor: default;
+    opacity: .5;
+    border-radius: 23px;
+}
+
+#main .slick_arrow img {
+    width: 34px;
+}
+
+#main .slick_next {
+    position: absolute;
+    right: -62px;
+    width: 42px;
+    height: 42px;
+    bottom: 332px;
+     border-radius: 23px;
+     cursor: default;
+}
+
+#main .slick_next img {
+     width: 34px;
+}
+
+#main .custom_per {
+    position: absolute;
+    display: block;
+    bottom: 70px;
+    left: 50%;
+    font-size: 16px;
+    line-height: 24px;
+    color: #666;
+}
+
+#main .opt12 {
+    height: 700px
+}
+
+#main .opt12 > .group_desc {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+#main .wrap_desc1 {
+    position: absolute;
+    top: 50%;
+    right: 68px;
+    max-width: 345px;
+}
+
+#main .wrap_desc1 strong {
+    overflow: hidden;
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.44;
+    /* letter-spacing: -.8px; */
+    color: #000
+}
+
+#main .wrap_desc1 p {
+    overflow: hidden;
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #666
+}
+
+#main .wrap_link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#main .wrap_link a {
+    display: inline-block;
+    padding: 8px 20px 10px;
+    margin: 8px 8px 0 0;
+    border-radius: 24px;
+    background-color: #eee;
+    font-weight: 700;
+    line-height: 24px;
+    /* letter-spacing: -.2px; */
+     color: #000;
+         font-size: 14px;
+}
+
+#main .wrap_link a img {
+    width: 16px;
+    padding-left: 7px;
+    margin-bottom: 3px;
+}
+
+#main .group_thumb1 {
+    position: relative;
+    float: right;
+    width: 50%;
+    height: 100%;
+}
+
+#main .wrap_thumb1 {
+    width: 734px;
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 124px;
+}
+
+#main .slick_slider1 {
+    position: relative;
+    display: block;
+}
+
+#main .slick_track1 {
+    width: 734px;
+    opacity: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+#main .slick_slide1 {
+    outline: none;
+    width: 734px;
+    position: relative;
+    left: 0px;
+    opacity: 1;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    display: block;
+}
+
+#main .item_thumb1 {
+    width: 694px !important;
+    border-radius: 24px;
+}
+
+#main .item_thumb1 img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+#main 
+
+#main 
+
+#main 
+
+#main 
+
+#main 
+
+#main 
+
+#main 
+
+#main 
+
+#main 
 
