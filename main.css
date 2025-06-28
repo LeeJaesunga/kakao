@@ -793,7 +793,6 @@ header .item_menu.active {
     left: -4% !important;
     margin-left: 71px;
     border-radius: 23px;
-    background-color: red; /* 확인용 */
     z-index: 9999;
 }
 
