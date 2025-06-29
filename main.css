@@ -774,26 +774,14 @@ header .item_menu.active {
     display: block;
 }
 
-#main
-
-#main
-
-#main
-
-#main
-
-#main
-
-#main .slick_slider_emoticon .slick_prev13 {
-    position: absolute !important;
-    width: 32px !important;
-    height: 32px !important;
-    top: 50% !important;
-    transform: translateY(-50%);
-    left: -4% !important;
-    margin-left: 71px;
+#main .slick_prev13 {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin-left: -70px;
+    top: 600px;
+    left: 12%;
     border-radius: 23px;
-    z-index: 9999;
 }
 
 #main .slick_prev13 img {
@@ -827,9 +815,17 @@ header .item_menu.active {
     width: 32px;
 }
 
-#main
+/* 쇼핑 */
 
-#main
+#main .opt_Shopping { 
+    height: 900px;
+}
+
+/* 채널 */
+
+#main .opt_Channel {
+    height: 900px;
+}
 
 #main
 
