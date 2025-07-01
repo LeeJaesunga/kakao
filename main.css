@@ -313,18 +313,21 @@ header .item_menu.active {
 }
 
 #main .area_visual {
-    height: calc(100vh - 72px);
-    position: relative;
-    overflow: hidden;
-    max-width: 1920px;
-    margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 72px);
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 #main .area_visual img {
-    position: absolute;
-    width: 100%;
-    object-fit: cover;
-    top: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transition: transform 0.05s ease-out;
 }
 
 #main .section_featrure {
@@ -336,6 +339,11 @@ header .item_menu.active {
     position: relative;
     opacity: .2;
 }
+
+/* 애니메이션 */
+
+
+/*  */
 
 #main .inner_cont {
     position: absolute;

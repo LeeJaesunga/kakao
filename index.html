@@ -968,13 +968,61 @@
 
 
 <script>
-document.querySelectorAll('.item_menu').forEach(btn => {
-  btn.addEventListener('click', function () {
-    document.querySelectorAll('.item_menu').forEach(el => el.classList.remove('active'));
-    this.classList.add('active');
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = [
+    0, // 최상단(0px)
+    document.querySelector('.area_visual').offsetTop
+  ];
+  let currentIndex = 0; // 현재 구간 인덱스
+  let isScrolling = false;
+
+  function smoothScrollTo(targetY, duration = 1300) {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress < 0.5
+        ? 2 * progress * progress
+        : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, startY + distance * ease);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        isScrolling = false; // 스크롤 완료 표시
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('wheel', (e) => {
+    if (isScrolling) {
+      e.preventDefault();
+      return;
+    }
+
+    if (e.deltaY > 0) { // 아래로 휠 내림
+      if (currentIndex < sections.length - 1) {
+        e.preventDefault();
+        isScrolling = true;
+        currentIndex++;
+        smoothScrollTo(sections[currentIndex]);
+      }
+    } else if (e.deltaY < 0) { // 위로 휠 올림
+      if (currentIndex > 0) {
+        e.preventDefault();
+        isScrolling = true;
+        currentIndex--;
+        smoothScrollTo(sections[currentIndex]);
+      }
+    }
+  }, { passive: false });
 });
 </script>
+
 
 </body>
 </html>
