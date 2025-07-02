@@ -1,3 +1,16 @@
+/* 스크립트 페이드업 css */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body {
     word-break: keep-all;
     word-wrap: break-word;
@@ -320,14 +333,21 @@ header .item_menu.active {
   margin: 0 auto;
 }
 
-#main .area_visual img {
+/* specificity 높이기 위해 "> img" 사용 */
+#main .area_visual > img {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
   object-fit: cover;
+  transform: translateY(0);            /* 초기 위치 */
+  transition: transform 1s ease-in-out;
   will-change: transform;
-  transition: transform 0.05s ease-out;
+}
+
+/* up 클래스가 붙으면 위로 120% */
+#main .area_visual.up > img {
+  transform: translateY(-120%);
+  transition: transform 1s ease-in-out;
 }
 
 #main .section_featrure {
@@ -335,9 +355,14 @@ header .item_menu.active {
 }
 
 #main .area_intro {
-    height: calc(100vh - 72px);
-    position: relative;
-    opacity: .2;
+  height: calc(100vh - 72px);
+  position: relative;
+  opacity: 0.2;
+  transition: opacity 0.8s ease;
+}
+
+#main .area_intro.show {
+  opacity: 1;
 }
 
 /* 애니메이션 */

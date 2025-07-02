@@ -377,7 +377,7 @@
                                                 </div>
                                             
                                             <!-- <div class="item_feature_emoticon"> -->
-                                                <div class="opt_emoticon">
+                                                <div class="opt_emoticon fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon">
                                                             <strong>이모티콘</strong>
@@ -441,7 +441,7 @@
 
 
                                                 <!-- 쇼핑 -->
-                                                <div class="opt_Shopping">
+                                                <div class="opt_Shopping fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon wrap_desc_Shopping">
                                                             <strong>카카오쇼핑</strong>
@@ -472,7 +472,7 @@
                                                 </div>
 
                                                 <!-- 채널 -->
-                                                <div class="opt_Channel">
+                                                <div class="opt_Channel fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon">
                                                             <strong>채널</strong>
@@ -505,7 +505,7 @@
 
                                                 <!-- 메일 -->
 
-                                                 <div class="opt_Mail">
+                                                 <div class="opt_Mail fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon">
                                                             <strong>카카오메일</strong>
@@ -538,7 +538,7 @@
 
                                                 <!-- 테마 -->
 
-                                                 <div class="opt_Theme">
+                                                 <div class="opt_Theme fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon">
                                                             <strong>테마</strong>
@@ -596,7 +596,7 @@
 
                                                 <!-- Wallet -->
 
-                                                <div class="opt_Wallet">
+                                                <div class="opt_Wallet fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon">
                                                             <strong>지갑</strong>
@@ -658,7 +658,7 @@
 
                                                 <!-- Laboratory -->
 
-                                                <div class="opt_Laboratory">
+                                                <div class="opt_Laboratory fade-in-up">
                                                     <div class="group_desc_emoticon">
                                                         <div class="wrap_desc_emoticon">
                                                             <strong>실험실</strong>
@@ -969,57 +969,52 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const sections = [
-    0, // 최상단(0px)
-    document.querySelector('.area_visual').offsetTop
-  ];
-  let currentIndex = 0; // 현재 구간 인덱스
-  let isScrolling = false;
 
-  function smoothScrollTo(targetY, duration = 1300) {
-    const startY = window.scrollY;
-    const distance = targetY - startY;
-    const startTime = performance.now();
+  /*──────── 1. fade‑in‑up 공통 ────────*/
+  const fadeIO = new IntersectionObserver(entries => {
+    entries.forEach(e =>
+      e.target.classList.toggle('show', e.isIntersecting)
+    );
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.fade-in-up')
+          .forEach(el => fadeIO.observe(el));
 
-    function step(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const ease = progress < 0.5
-        ? 2 * progress * progress
-        : -1 + (4 - 2 * progress) * progress;
-      window.scrollTo(0, startY + distance * ease);
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        isScrolling = false; // 스크롤 완료 표시
-      }
-    }
-
-    requestAnimationFrame(step);
+  /*──────── 2. area_intro 불투명도 전환 ────────*/
+  const introEl = document.querySelector('.area_intro');
+  if (introEl) {
+    const introIO = new IntersectionObserver(entries => {
+      entries.forEach(e =>
+        introEl.classList.toggle('show', e.isIntersecting)
+      );
+    }, { threshold: 0.5 });
+    introIO.observe(introEl);
   }
 
-  window.addEventListener('wheel', (e) => {
-    if (isScrolling) {
-      e.preventDefault();
-      return;
-    }
+  /*──────── 3. area_visual 커튼 애니메이션 ────────*/
+  const visualEl = document.querySelector('#main .area_visual');
+  if (visualEl) {
+    let hasScrolled = false;
+    window.addEventListener('scroll', () => { hasScrolled = true; });
 
-    if (e.deltaY > 0) { // 아래로 휠 내림
-      if (currentIndex < sections.length - 1) {
-        e.preventDefault();
-        isScrolling = true;
-        currentIndex++;
-        smoothScrollTo(sections[currentIndex]);
-      }
-    } else if (e.deltaY < 0) { // 위로 휠 올림
-      if (currentIndex > 0) {
-        e.preventDefault();
-        isScrolling = true;
-        currentIndex--;
-        smoothScrollTo(sections[currentIndex]);
-      }
-    }
-  }, { passive: false });
+    /*  rootMargin: 하단 20%를 '미리' 잘라낸 가상 뷰포트
+        → 실제 화면 하단에서 20%만 내려가도 isIntersecting이 false */
+    const curtainIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!hasScrolled) return;                       // 첫 로딩엔 작동 X
+        if (!entry.isIntersecting) {                    // 20% 이상 벗어남
+          visualEl.classList.add('up');                 // 이미지 위로!
+        } else {
+          visualEl.classList.remove('up');              // 다시 보여주기
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -30% 0px',   // 하단 20% 미리 당겨서 감지
+      threshold: 0                     // 한 점이라도 겹치면 true
+    });
+
+    curtainIO.observe(visualEl);
+  }
+
 });
 </script>
 
