@@ -1,3 +1,19 @@
+.slick_slider {
+  /* overflow: hidden; */
+  position: relative;
+}
+
+.slick_track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: auto;     
+}
+
+.slick_slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
 /* 스크립트 페이드업 css */
 
 .fade-in-up {
@@ -497,6 +513,9 @@ header .item_menu.active {
     cursor: default;
     opacity: .5;
     border-radius: 23px;
+     pointer-events: auto;    
+      background: rgba(255,255,255,0.8); 
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
 }
 
 #main .slick_arrow img {
@@ -511,6 +530,7 @@ header .item_menu.active {
     bottom: 332px;
      border-radius: 23px;
      cursor: default;
+      pointer-events: auto;    
 }
 
 #main .slick_next img {

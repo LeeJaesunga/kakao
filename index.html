@@ -218,7 +218,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="slick_current slick_slide">
+                                                            <div class=" slick_slide">
                                                                 <div>
                                                                     <div class="item_feature">
                                                                         <div class="group_desc">
@@ -970,7 +970,9 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
-  /*──────── 1. fade‑in‑up 공통 ────────*/
+  /* ───────── ① IntersectionObserver 애니메이션 ───────── */
+
+  /* 1) fade‑in‑up 공통 */
   const fadeIO = new IntersectionObserver(entries => {
     entries.forEach(e =>
       e.target.classList.toggle('show', e.isIntersecting)
@@ -979,7 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.fade-in-up')
           .forEach(el => fadeIO.observe(el));
 
-  /*──────── 2. area_intro 불투명도 전환 ────────*/
+  /* 2) area_intro 불투명도 전환 */
   const introEl = document.querySelector('.area_intro');
   if (introEl) {
     const introIO = new IntersectionObserver(entries => {
@@ -990,33 +992,62 @@ document.addEventListener('DOMContentLoaded', () => {
     introIO.observe(introEl);
   }
 
-  /*──────── 3. area_visual 커튼 애니메이션 ────────*/
+  /* 3) area_visual 커튼 애니메이션 */
   const visualEl = document.querySelector('#main .area_visual');
   if (visualEl) {
     let hasScrolled = false;
     window.addEventListener('scroll', () => { hasScrolled = true; });
 
-    /*  rootMargin: 하단 20%를 '미리' 잘라낸 가상 뷰포트
-        → 실제 화면 하단에서 20%만 내려가도 isIntersecting이 false */
     const curtainIO = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (!hasScrolled) return;                       // 첫 로딩엔 작동 X
-        if (!entry.isIntersecting) {                    // 20% 이상 벗어남
-          visualEl.classList.add('up');                 // 이미지 위로!
-        } else {
-          visualEl.classList.remove('up');              // 다시 보여주기
-        }
+        if (!hasScrolled) return;          // 새로고침 직후엔 트리거 X
+        visualEl.classList.toggle('up', !entry.isIntersecting);
       });
     }, {
-      rootMargin: '0px 0px -30% 0px',   // 하단 20% 미리 당겨서 감지
-      threshold: 0                     // 한 점이라도 겹치면 true
+      rootMargin: '0px 0px -30% 0px',      // 하단 30% 미리 감지
+      threshold: 0
     });
-
     curtainIO.observe(visualEl);
   }
 
+  /* ───────── ② 슬라이더(버튼 클릭으로 이동) ───────── */
+
+   const track = document.querySelector('.slick_track');
+  const slides = document.querySelectorAll('.slick_slide');
+  const btnPrev = document.querySelector('.slick_arrow');
+  const btnNext = document.querySelector('.slick_next');
+  const currentNum = document.querySelector('.num_current');
+  const totalNum = document.querySelector('.num_total');
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  totalNum.textContent = totalSlides;
+
+  function updateSlide() {
+    track.style.transform = `translateX(-${100 * currentIndex}%)`;
+    currentNum.textContent = currentIndex + 1;
+  }
+
+  btnPrev.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlide();
+    }
+  });
+
+  btnNext.addEventListener('click', () => {
+    if (currentIndex < totalSlides - 1) {
+      currentIndex++;
+      updateSlide();
+    }
+  });
+
+  updateSlide(); // 초기 슬라이드 위치
+  
+
 });
 </script>
+
 
 
 </body>
