@@ -1064,7 +1064,7 @@
                                     <li><a href="#"><span>동반 성장 사이트</span></a></li>
                                     <li><a href="#"><span>제주 with kakao</span></a></li>
                                 </ul>
-                                </div>
+                            </div>
                             <small class="txt_ffff">
                                 ©
                                 <a href=""> Kakao Corp.</a>
@@ -1295,6 +1295,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('#gnb_menu .item_menu.active').forEach(b => b.classList.remove('active'));
     backdrop.classList.remove('active');
   });
+
+  const toggleBtn = document.querySelector('.relation_toggle_btn');
+  const toggleList = document.querySelector('.list_subunfoffs');
+  const toggleIcon = toggleBtn.querySelector('.toggle_icon');
+
+  if (toggleBtn && toggleList && toggleIcon) {
+    toggleBtn.addEventListener('click', () => {
+      toggleList.classList.toggle('active');
+      toggleIcon.classList.toggle('active');
+    });
+  }
 });
 
 </script>
