@@ -206,7 +206,7 @@ header .slick-tracked::before {
 header .slick-currented {
     display: block;
     outline: none;
-    /* width: 199px; */
+    width: 199px;
     position: relative;
     left: 0px;
     opacity: 1;
