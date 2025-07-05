@@ -102,10 +102,34 @@ header .item_menu.active {
 }
 
 #main_Menu-0 {
-  display: none;                 /* 하나만 남김 */
+  display: none;                
   position: absolute;
   top: 64px;
   left: -20px;
+  padding: 35px;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 24px 24px;
+  background: #fff;
+}
+
+#main_Menu-2 {
+  display: none;                 
+  position: absolute;
+  top: 64px;
+  left: 33px;
+  padding: 35px;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 24px 24px;
+  background: #fff;
+}
+
+#main_Menu-3 {
+  display: none;                 
+  position: absolute;
+  top: 64px;
+  left: -12px;
   padding: 35px;
   border: 1px solid #eee;
   border-top: none;
@@ -152,6 +176,12 @@ header .cont_menu {
     border-left: 1px solid #eee;
 }
 
+header .cont_menued {
+    width: 325px;
+    padding-left: 36px;
+    border-left: 1px solid #eee;
+}
+
 header .slick-initialized {
     position: relative;
     display: block;
@@ -177,6 +207,32 @@ header .slick-currented {
     display: block;
     outline: none;
     /* width: 199px; */
+    position: relative;
+    left: 0px;
+    opacity: 1;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    z-index: 999;
+}
+
+header .slick-currenteded {
+    display: block;
+    outline: none;
+    width: 199px;
+    position: relative;
+    left: 0px;
+    opacity: 1;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    z-index: 999;
+}
+
+header .slick-currentededed {
+    display: block;
+    outline: none;
+    width: 314px;
     position: relative;
     left: 0px;
     opacity: 1;
@@ -231,6 +287,16 @@ header .wrap_conted {
     border-radius: 0 0 16px 16px;
     background-color: #f3f3f3;
     box-sizing: border-box;
+    margin-bottom: 4px;
+}
+
+header .wrap_conteded {
+    min-height: 130px;
+    padding: 20px;
+    border-radius:16px;
+    background-color: #f3f3f3;
+    box-sizing: border-box;
+    margin-bottom: 4px;
 }
 
 header .wrap_conted img {
@@ -241,6 +307,25 @@ header .wrap_conted img {
 }
 
 header .wrap_conted strong {
+    overflow: hidden;
+    display: -webkit-box;
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    color: #000;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+header .wrap_conteded img {
+    width: 23px;
+    display: inline-block;
+    margin: 2px 8px 0 0;
+    vertical-align: top;
+}
+
+header .wrap_conteded strong {
     overflow: hidden;
     display: -webkit-box;
     margin-top: 8px;
