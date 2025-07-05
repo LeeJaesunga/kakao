@@ -121,6 +121,21 @@ header .list_second {
     margin-top: -12px;
 }
 
+header .list_seconded {
+    display: flex;
+    margin-top: -12px;
+}
+
+header .list_seconded li a{
+    display: block;
+    min-width: 142px;
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 28px;
+    color: #000;
+    white-space: pre-line;
+}
+
 header .list_second li a{
     display: block;
     min-width: 142px;
@@ -219,7 +234,7 @@ header .wrap_conted {
 }
 
 header .wrap_conted img {
-    width: 19px;
+    width: 23px;
     display: inline-block;
     margin: 2px 8px 0 0;
     vertical-align: top;
@@ -1972,6 +1987,18 @@ position: absolute;
         border-radius: 17px;
 }
 
+#main .item_thumb_emoticon1 {
+    width: auto !important;
+    max-width: 186px;
+    border-radius: 17px;
+}
+
+#main .item_thumb_emoticon2 {
+    width: auto !important;
+    max-width: 186px;
+    border-radius: 17px;
+}
+
 /*  item_thumb_emoticon 이미지 */
 #main .item_thumb_emoticon img {
     border-radius: 17px;
@@ -2138,6 +2165,10 @@ main .wrap-link10 a span {
     /* float: none; */
     margin-top: 48px;
     width: 100%;
+}
+
+.toggle_icon {
+    left: 171px;
 }
 
 .wrap_relationf a img {
