@@ -46,7 +46,7 @@
 
                                 </li>
 
-                                    <li class="on"><button type="button" class="item_menu">기술과 서비스</button>
+                                    <li><button type="button" class="item_menu">기술과 서비스</button>
 
                                          <div id="main_Menu-0">
                                             <ul class="list_seconded">
@@ -1262,30 +1262,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ───────── ④ 관련사이트 토글 ───────── */
-  const menuButtons = document.querySelectorAll('.item_menu');
+  /* ───────── ④ GNB 메뉴 토글 + 어두운 배경 ───────── */
+  const backdrop = document.createElement('div');
+  backdrop.className = 'menu_backdrop';
+  document.body.appendChild(backdrop);
 
-menuButtons.forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    const li = btn.closest('li');
-    const isOpen = li.classList.contains('on');
+  /* 메뉴 버튼들 */
+  document.querySelectorAll('#gnb_menu .item_menu').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
 
-    // 모든 열린 메뉴 닫기
-    document.querySelectorAll('#gnb_menu li.on').forEach(openLi => {
-      openLi.classList.remove('on');
-      openLi.querySelector('.item_menu')?.classList.remove('active');
+      const li = btn.closest('li');
+      const isOpen = li.classList.contains('on');
+
+      /* 열려 있던 항목 & 백드롭 모두 닫기 */
+      document.querySelectorAll('#gnb_menu li.on').forEach(el => el.classList.remove('on'));
+      document.querySelectorAll('#gnb_menu .item_menu.active').forEach(el => el.classList.remove('active'));
+      backdrop.classList.remove('active');
+
+      /* 새로 열어야 하면 다시 열기 */
+      if (!isOpen) {
+        li.classList.add('on');
+        btn.classList.add('active');
+        backdrop.classList.add('active');
+      }
     });
+  });
 
-    // 자신이 닫혀 있었으면 열기
-    if (!isOpen) {
-      li.classList.add('on');
-      btn.classList.add('active');
-    }
+  /* 백드롭 클릭 시 모두 닫기 */
+  backdrop.addEventListener('click', () => {
+    document.querySelectorAll('#gnb_menu li.on').forEach(li => li.classList.remove('on'));
+    document.querySelectorAll('#gnb_menu .item_menu.active').forEach(b => b.classList.remove('active'));
+    backdrop.classList.remove('active');
   });
 });
 
-});
 </script>
 
 

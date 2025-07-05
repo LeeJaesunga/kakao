@@ -27,6 +27,17 @@
   transform: translateY(0);
 }
 
+/* 오버레이 */
+
+.gnb_overlay{
+  display:none;            
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,.45); 
+  z-index:900;               
+}
+
 body {
     word-break: keep-all;
     word-wrap: break-word;
@@ -102,15 +113,16 @@ header .item_menu.active {
 }
 
 #main_Menu-0 {
-  display: none;                
-  position: absolute;
-  top: 64px;
-  left: -20px;
-  padding: 35px;
-  border: 1px solid #eee;
-  border-top: none;
-  border-radius: 0 0 24px 24px;
-  background: #fff;
+  display: none;
+    position: absolute;
+    top: 64px;
+    left: -20px;
+    padding: 35px;
+    border: 1px solid #eee;
+    border-top: none;
+    border-radius: 0 0 24px 24px;
+    background: #fff;
+    height: 300px;
 }
 
 #main_Menu-2 {
@@ -171,7 +183,7 @@ header .list_second li a{
 }
 
 header .cont_menu {
-    width: 199px;
+    width: 294px;
     padding-left: 36px;
     border-left: 1px solid #eee;
 }
@@ -206,14 +218,19 @@ header .slick-tracked::before {
 header .slick-currented {
     display: block;
     outline: none;
-    width: 199px;
+    width: 280px;
+    height: 101px;
     position: relative;
     left: 0px;
     opacity: 1;
     float: left;
-    height: 100%;
+    height: 132%;
     min-height: 1px;
     z-index: 999;
+}
+
+header .slick-currented2 {
+    height: 313px;
 }
 
 header .slick-currenteded {
@@ -277,7 +294,7 @@ header .slick-currented2 a {
 header .slick-currented2 a img {
     display: block;
     width: 100%;
-    height: 111px;
+    height: 153px;
     border-radius: 16px 16px 0 0;
 }
 
