@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-  /* ───────── ① IntersectionObserver 애니메이션 ───────── */
+    
   const fadeIO = new IntersectionObserver(entries =>
     entries.forEach(e => e.target.classList.toggle('show', e.isIntersecting)),
     { threshold: 0.6 }
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     curtainIO.observe(visualEl);
   }
 
-  /* ───────── ②‑A 메인 슬라이더 (가로 이동) ───────── */
   const track       = document.querySelector('.slick_track');
   const slides      = document.querySelectorAll('.slick_slide');
   const btnPrev     = document.querySelector('.slick_arrow');
@@ -55,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', updateMain);
   updateMain();
 
-  /* ───────── ②‑B 이모티콘 슬라이더 (기존 슬라이더) ───────── */
   const slideClasses = [
     '.slick_slide_emoticon',
     '.slick_slide_emoticon1',
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
   emoNext.addEventListener('click', () => { if (emoIdx < emoMax-1) { emoIdx++; updateEmo(); } });
   updateEmo();
 
-  /* ───────── ②‑C 테마 슬라이더 (독립 작동) ───────── */
   document.querySelectorAll('.opt_Theme').forEach(themeSlider => {
     const themeSlides = [
       themeSlider.querySelector('.slick_slide_emoticon'),
@@ -129,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTheme();
   });
 
-  /* ───────── ②‑D 지갑 슬라이더 (독립 작동) ───────── */
   document.querySelectorAll('.opt_Wallet').forEach(walletSlider => {
     const walletSlides = [
       walletSlider.querySelector('.slick_slide_emoticon'),
@@ -173,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateWallet();
   });
 
-  /* ───────── ③ 맨 위로 가기 버튼 ───────── */
   const topBtn = document.querySelector('.like_tops');
   if (topBtn) {
     topBtn.addEventListener('click', () => {
@@ -181,12 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ───────── ④ GNB 메뉴 토글 + 어두운 배경 ───────── */
   const backdrop = document.createElement('div');
   backdrop.className = 'menu_backdrop';
   document.body.appendChild(backdrop);
 
-  /* 메뉴 버튼들 */
   document.querySelectorAll('#gnb_menu .item_menu').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -194,12 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const li = btn.closest('li');
       const isOpen = li.classList.contains('on');
 
-      /* 열려 있던 항목 & 백드롭 모두 닫기 */
       document.querySelectorAll('#gnb_menu li.on').forEach(el => el.classList.remove('on'));
       document.querySelectorAll('#gnb_menu .item_menu.active').forEach(el => el.classList.remove('active'));
       backdrop.classList.remove('active');
 
-      /* 새로 열어야 하면 다시 열기 */
       if (!isOpen) {
         li.classList.add('on');
         btn.classList.add('active');
@@ -208,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* 백드롭 클릭 시 모두 닫기 */
   backdrop.addEventListener('click', () => {
     document.querySelectorAll('#gnb_menu li.on').forEach(li => li.classList.remove('on'));
     document.querySelectorAll('#gnb_menu .item_menu.active').forEach(b => b.classList.remove('active'));
