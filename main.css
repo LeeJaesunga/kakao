@@ -615,65 +615,68 @@ header .txt_category {
   margin: 0 auto;
 }
 
-/* specificity 높이기 위해 "> img" 사용 */
 #main .area_visual > img {
   position: absolute;
-  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  transform: translateY(0);            /* 초기 위치 */
-  transition: transform 1s ease-in-out;
+  transform: translateY(0);
+  transition: transform 1.2s ease-in-out;
   will-change: transform;
 }
 
-/* up 클래스가 붙으면 위로 120% */
+/* 스크롤 시 위로 120% 올라감 */
 #main .area_visual.up > img {
-  transform: translateY(-120%);
-  transition: transform 1s ease-in-out;
+  transform: translateY(120%);
 }
 
+/* =========================================
+   2) 인트로 섹션 (아래에서 부드럽게 등장)
+========================================= */
 #main .section_featrure {
-    position: relative;
+  position: relative;
 }
 
 #main .area_intro {
   height: calc(100vh - 72px);
   position: relative;
-  opacity: 0.2;
-  transition: opacity 0.8s ease;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
 }
 
 #main .area_intro.show {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* 애니메이션 */
-
-
-/*  */
-
+/* =========================================
+   3) 인너 콘텐츠 중앙 정렬 및 텍스트 스타일
+========================================= */
 #main .inner_cont {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 816px;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 816px;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 #main .inner_cont img {
-    max-width: 100%;
-    max-height: 84px;
-    margin-bottom: 36px;
+  max-width: 100%;
+  max-height: 84px;
+  margin-bottom: 36px;
 }
 
 #main .inner_cont p {
- overflow: hidden;
- font-size: 32px;
-    font-weight: 700;
-    line-height: 1.38;
-    letter-spacing: -.8px;
-    color:#000
+  overflow: hidden;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.38;
+  letter-spacing: -0.8px;
+  color: #000;
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 #main .area_feature {
@@ -1863,6 +1866,13 @@ position: absolute;
     /* margin-bottom: -277px; */
 }
 
+#main .area_feature {
+    margin: 0 auto;
+    max-width: 364px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
 #main .area_intro {
     margin: 0 auto;
     max-width: 364px;
@@ -1875,12 +1885,7 @@ position: absolute;
      line-height: 1.45;
 }
 
-#main .area_feature {
-    margin: 0 auto;
-    max-width: 364px;
-    padding-left: 24px;
-    padding-right: 24px;
-}
+
 
 #main .slick_slide {
     outline: none;
