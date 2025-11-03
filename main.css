@@ -628,7 +628,7 @@ header .txt_category {
 
 /* 스크롤 시 위로 120% 올라감 */
 #main .area_visual.up > img {
-  transform: translateY(120%);
+  transform: translateY(100%);
 }
 
 /* =========================================
@@ -636,6 +636,8 @@ header .txt_category {
 ========================================= */
 #main .section_featrure {
   position: relative;
+  height: calc(100vh - 72px);
+  overflow: hidden;
 }
 
 #main .area_intro {
@@ -651,9 +653,7 @@ header .txt_category {
   transform: translateY(0);
 }
 
-/* =========================================
-   3) 인너 콘텐츠 중앙 정렬 및 텍스트 스타일
-========================================= */
+
 #main .inner_cont {
   position: absolute;
   top: 50%;
